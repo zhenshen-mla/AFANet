@@ -11,19 +11,19 @@
   tensorboardX  
   
 ## Installation
-  1.Clone the repo:
+  1. Clone the repo:
   ```
   git clone https://github.com/IJCAI2020-MTL/AFANet.git   
   cd AFANet
   ```
-  2.For custom dependencies:
+  2. For custom dependencies:
   ```
   pip install matplotlib tensorboardX   
   ```
 
 ## For Training
-  1.Configure your dataset path in `Dataloader.py`.   
-  2.Deeplabv3+ networks with ResNet backbone are used to train semantic segmentation and depth prediction:
+  1. Configure your dataset path in `Dataloader.py`.   
+  2. Deeplabv3+ networks with ResNet backbone are used to train semantic segmentation and depth prediction(see full input arguments in ```train_multi.py``` ):
   ```
   python train_multi.py
   ```
