@@ -16,6 +16,10 @@
   |列1的内容2|列2的内容2|
   
 ## Installation
+  ```
   git clone https://github.com/IJCAI2020-MTL/AFANet.git   
+  ```
+  ```
   pip install matplotlib tensorboardX   
+  ```
 
