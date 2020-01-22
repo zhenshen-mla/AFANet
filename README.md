@@ -10,19 +10,17 @@
   torchvision >= 0.2   
   tensorboardX  
   
-  |列名1|列名2|
-  |:---|:---|
-  |列1的内容1|列2的内容1|
-  |列1的内容2|列2的内容2|
-  
 ## Installation
-  Clone the repo:
+  1.Clone the repo:
   ```
   git clone https://github.com/IJCAI2020-MTL/AFANet.git   
   cd AFANet
   ```
-  For custom dependencies:
+  2.For custom dependencies:
   ```
   pip install matplotlib tensorboardX   
   ```
+
+## For Training
+  1.Configure your dataset path in Dataloader.py.
 
