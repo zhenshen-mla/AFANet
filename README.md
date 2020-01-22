@@ -7,7 +7,7 @@
   Python >= 3.6  
   numpy  
   PyTorch >= 1.0  
-  torchvision >= 0.2
+  torchvision >= 0.2   
   tensorboardX  
   
   |列名1|列名2|
