@@ -22,5 +22,5 @@
   ```
 
 ## For Training
-  1.Configure your dataset path in Dataloader.py.
+  1.Configure your dataset path in `Dataloader.py`.
 
