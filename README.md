@@ -22,5 +22,10 @@
   ```
 
 ## For Training
-  1.Configure your dataset path in `Dataloader.py`.
+  1.Configure your dataset path in `Dataloader.py`.   
+  2.Deeplabv3+ networks with ResNet backbone are used to train semantic segmentation and depth prediction:
+  ```
+  python train_multi.py
+  ```
+
 
