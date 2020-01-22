@@ -23,7 +23,7 @@
 
 ## For Training   
   1. Configure your dataset path in `Dataloader.py`.   
-  2. Deeplabv3+ networks with ResNet backbone are used to train semantic segmentation and depth prediction(see full input arguments in    ```train_multi.py``` ):
+  2. Deeplabv3+ networks with ResNet backbone are used to train semantic segmentation and depth prediction(see full input arguments in    ```train_multi.py``` ):   
     ```
     python train_multi.py
     ```
