@@ -35,10 +35,15 @@
     ```
 
 ## For Training   
-  1. Configure your dataset path in `Dataloader.py`.   
-  2. Deeplabv3+ networks with ResNet backbone are used to train semantic segmentation and depth prediction(see full input arguments in    ```train_multi.py``` ):   
+  1. Download the dataset([NYUv2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html)) and configure your data path.   
+  2. Train the single-task and save the pretrained single-task model in /weights   
+    ```
+    python train_single.py
+    ```
+  3. Use Deeplabv3+ networks with ResNet backbone to train semantic segmentation and depth prediction(load those pretrained weights):   
     ```
     python train_multi.py
     ```
+  
 
 
