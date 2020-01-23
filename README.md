@@ -35,12 +35,12 @@
     ```
 
 ## For Training   
-  1. Download the dataset([NYUv2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html)) and configure your data path.   
+  1. Download the dataset([NYUv2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html),[Adience benckmark](https://talhassner.github.io/home/projects/Adience/Adience-data.html#frontalized)) and configure the data path.   
   2. Train the single-task and save the pretrained single-task model in `/weights`   
     ```
     python train_single.py
     ```
-  3. Use Deeplabv3+ networks with ResNet backbone to train semantic segmentation and depth prediction(load those pretrained weights):   
+  3. Use Deeplabv3+ networks with ResNet backbone to train semantic segmentation and depth prediction (load those pretrained weights):   
     ```
     python train_multi.py
     ```
