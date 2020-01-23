@@ -3,7 +3,7 @@
   Implemention of Paper：Deep Adaptive Feature Aggregation in Multi-task Convolutional Neural Networks   
   
 ## Introduction
-
+  ![](https://github.com/IJCAI2020-MTL/AFANet/raw/master/Architecture.png) 
   
 ## Requirements  
 
