@@ -1,6 +1,6 @@
 # AFANet
 
-  Implemention of Paper：Deep Adaptive Feature Aggregation in Multi-task Convolutional Neural Networks   
+  Implementation of Paper：Deep Adaptive Feature Aggregation in Multi-task Convolutional Neural Networks   
   
 ## Introduction
   ![](https://github.com/IJCAI2020-MTL/AFANet/raw/master/Architecture.png)   
@@ -40,7 +40,7 @@
     ```
     python train_single.py
     ```
-  3. Use Deeplabv3+ networks with ResNet backbone to conduct semantic segmentation and depth prediction (load those pretrained model in `/weights`):   
+  3. Use Deeplabv3+ network with ResNet backbone to conduct semantic segmentation and depth prediction (load pretrained model in `/weights`):   
     ```
     python train_multi.py
     ```
