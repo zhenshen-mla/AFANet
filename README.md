@@ -11,7 +11,7 @@
   * `/models/pixel_hard.py & image_hard.py`: parameters hard sharing baseline;   
   * `/models/pixel_cross.py & image_cross.py`: cross stitch baseline;   
   * `/models/pixel_nddr.py & image_nddr.py`: nddr-cnn baseline;   
-  * `/models/pixel_AFA.py & image_AFA.py`: implemention of afa layer;   
+  * `/models/pixel_AFA.py & image_AFA.py`: implementation of afa layer;   
   
 ## Requirements  
 
