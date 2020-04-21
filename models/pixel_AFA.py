@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as m
-from AFA import AFA_layer
+from AFA_Pixel import AFA_layer
 
 
 class Bottleneck(nn.Module):
