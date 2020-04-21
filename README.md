@@ -3,7 +3,7 @@
   Implementation of Paper：Deep Adaptive Feature Aggregation in Multi-task Convolutional Neural Networks   
   
 ## Introduction
-  ![](https://github.com/IJCAI2020-MTL/AFANet/raw/master/Architecture.png)   
+  ![image](https://github.com/IJCAI2020-MTL/AFANet/raw/master/Architecture.png)   
   The Adaptive Feature Aggregation (AFA) layer for multi-task CNNs, in which a dynamic aggregation mechanism is designed to allow each task adaptively determines the degree to which the feature aggregation of different tasks is needed. We introduce two types of aggregation modules to the AFA layer, which realize the adaptive feature aggregation by capturing the feature dependencies along the channel and spatial axes, respectively.   
   
 ## Models
