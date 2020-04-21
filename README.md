@@ -40,9 +40,9 @@
     ```
     python train_single_*.py
     ```
-  3. For pixel tasks, using Deeplabv3+ network with ResNet backbone to conduct semantic segmentation and depth prediction (load pretrained model in `/weights`). For image tasks, using ResNet network to conduct age prediction and gender classification (load pretrained model in `/weights`):   
+  3. For pixel tasks, using Deeplabv3+ network with ResNet backbone to conduct semantic segmentation and depth prediction. For image tasks, using ResNet network to conduct age prediction and gender classification (load pretrained model in `/weights`):   
     ```
-    python train_multi.py
+    python train_afa_*.py
     ```
   
 
