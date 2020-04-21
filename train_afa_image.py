@@ -3,7 +3,7 @@ import torch
 import numpy as np
 import torch.nn as nn
 import torch.optim as optim
-from data_process.Dataloader import make_loader
+from data_process.Dataloader import make_data_loader
 from models.image_AFA import make_network
 from tensorboardX import SummaryWriter
 from utils.scheduler import LR_Scheduler
