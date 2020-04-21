@@ -26,15 +26,29 @@ nclass1 = 40
 nclass2 = 1
 lr = 0.01
 num_epochs = 400
-batch_size = 16
-CUDA_ID = 0
-path = '/weights'
+batch_size = 12
+CUDA_ID = 3
+path = '/weights/'
 drop_last = True
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = str(CUDA_ID)
 
-writer = SummaryWriter(comment='_MTL')
+writer = SummaryWriter(comment='_MTL_AFA')
+
+def load_pretrained_model(model, path):
+    path = path + 'Single.pkl'
+    pretrain_dict = torch.load(path)
+    model_dict = {}
+    state_dict = model.state_dict()
+    for k, v in pretrain_dict.items():
+        if k[:8] == 'backbone':
+            if k in state_dict:
+                print(k)
+                model_dict[k] = v
+    state_dict.update(model_dict)
+    model.load_state_dict(state_dict)
+    return model
 
 
 def main():
@@ -54,6 +68,8 @@ def main():
                     num_classes2=nclass2,
                     output_stride=16,
                     freeze_bn=False)
+
+    model = load_pretrained_model(model, path)
 
     train_params = [{'params': model.get_1x_lr_params(), 'lr': lr},
                     {'params': model.get_10x_lr_params(), 'lr': lr * 10}]
@@ -224,7 +240,6 @@ def main():
         print('Threshold_1_25_2: {}'.format(Threshold_1_25_2_sum))
         print('Threshold_1_25_3: {}'.format(Threshold_1_25_3_sum))
 
-
         writer.add_scalar('scalar/loss_depth_val', val_loss2, epoch)
         writer.add_scalar('scalar/abs_err', abs_err_sum, epoch)
         writer.add_scalar('scalar/rel_err', rel_err_sum, epoch)
@@ -248,8 +263,11 @@ def main():
         if Threshold_1_25_3_sum > high_delta3:
             high_delta3 = Threshold_1_25_3_sum
 
+
 if __name__ == "__main__":
     main()
     writer.close()
+
+
 
 
