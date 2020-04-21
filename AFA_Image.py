@@ -52,11 +52,11 @@ class SAM(nn.Module):
         super(SAM, self).__init__()
 
         self.conv_A = nn.Conv2d(in_channels=2, out_channels=1, kernel_size=1, stride=1, padding=0)
-        self.fc_AA = nn.Linear(in_features=361, out_features=361)
-        self.fc_AB = nn.Linear(in_features=361, out_features=361)
+        self.fc_AA = nn.Linear(in_features=49, out_features=49)
+        self.fc_AB = nn.Linear(in_features=49, out_features=49)
         self.conv_B = nn.Conv2d(in_channels=2, out_channels=1, kernel_size=1, stride=1, padding=0)
-        self.fc_BA = nn.Linear(in_features=361, out_features=361)
-        self.fc_BB = nn.Linear(in_features=361, out_features=361)
+        self.fc_BA = nn.Linear(in_features=49, out_features=49)
+        self.fc_BB = nn.Linear(in_features=49, out_features=49)
 
         self.relu = nn.ReLU(inplace=True)
         self.bn1 = nn.BatchNorm2d(1)
