@@ -10,36 +10,19 @@ import torch
 from utils.metrics.evaluator import Evaluator
 from utils.metrics.error import depth_threshold, depth_error
 
-
-'''
-    Input arguments:
-      nclass1 : semantic segmentation classes
-      nclass2 : depth regression
-      lr : learning rate
-      num_epochs : 
-      batch_size :
-      CUDA_ID : 
-      drop_last :
-      path : model parameters path
-'''
-
-nclass1 = 40
-nclass2 = 1
-lr = 0.01
-num_epochs = 400
-batch_size = 16
-CUDA_ID = 0
-drop_last = True
-path = '/weights'
-
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = str(CUDA_ID)
+os.environ["CUDA_VISIBLE_DEVICES"] = "4"
 
 writer = SummaryWriter(comment='_STL')
 
 
 def main():
     # args
+    nclass1 = 40
+    nclass2 = 1
+    lr = 0.01
+    num_epochs = 400
+    batch_size = 12
     low_rms = 100.0
     low_rel = 100.0
     high_delta1 = 0.0
@@ -47,6 +30,8 @@ def main():
     high_delta3 = 0.0
     high_miou = 0.0
     high_pacc = 0.0
+    drop_last = True
+    path = '/weights/'
 
     # Define Dataloader
     train_loader, val_loader = make_data_loader(batch_size=batch_size, drop_last=drop_last)
@@ -196,7 +181,8 @@ def main():
 
         if mIoU > high_miou:
             high_miou = mIoU
-            torch.save(model.state_dict(), path+'Single_'+str(epoch)+'.pkl')
+            torch.save(model.state_dict(), path+'Single.pkl')
+            print('save the seg ' + str(epoch) + 'model, replace the previous model')
         if Acc > high_pacc:
             high_pacc = Acc
 
@@ -226,7 +212,6 @@ def main():
         print('Threshold_1_25_2: {}'.format(Threshold_1_25_2_sum))
         print('Threshold_1_25_3: {}'.format(Threshold_1_25_3_sum))
 
-
         writer.add_scalar('scalar/loss_depth_val', val_loss2, epoch)
         writer.add_scalar('scalar/abs_err', abs_err_sum, epoch)
         writer.add_scalar('scalar/rel_err', rel_err_sum, epoch)
@@ -241,6 +226,8 @@ def main():
 
         if rel_err_sum < low_rel:
             low_rel = rel_err_sum
+            torch.save(model.state_dict(), path + 'Single.pkl')
+            print('save the depth ' + str(epoch) + 'model, replace the previous model')
         if RMSE_linear_sum < low_rms:
             low_rms = RMSE_linear_sum
         if Threshold_1_25_sum > high_delta1:
@@ -254,5 +241,6 @@ def main():
 if __name__ == "__main__":
     main()
     writer.close()
+
 
 
