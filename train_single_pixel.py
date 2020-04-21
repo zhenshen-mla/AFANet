@@ -181,7 +181,7 @@ def main():
 
         if mIoU > high_miou:
             high_miou = mIoU
-            torch.save(model.state_dict(), path+'Single.pkl')
+            torch.save(model.state_dict(), path+'Single_seg.pkl')
             print('save the seg ' + str(epoch) + 'model, replace the previous model')
         if Acc > high_pacc:
             high_pacc = Acc
@@ -226,7 +226,7 @@ def main():
 
         if rel_err_sum < low_rel:
             low_rel = rel_err_sum
-            torch.save(model.state_dict(), path + 'Single.pkl')
+            torch.save(model.state_dict(), path + 'Single_depth.pkl')
             print('save the depth ' + str(epoch) + 'model, replace the previous model')
         if RMSE_linear_sum < low_rms:
             low_rms = RMSE_linear_sum
