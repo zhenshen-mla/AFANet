@@ -23,7 +23,7 @@
 ## Installation
   1. Clone the repo:   
     ```
-    git clone https://github.com/ACMMM2020-MTL/AFANet.git   
+    git clone https://github.com/zhenshen-mla/AFANet.git   
     ```   
     ```
     cd AFANet
