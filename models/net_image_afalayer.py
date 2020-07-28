@@ -31,8 +31,8 @@ class Bottleneck(nn.Module):
         if self.planes == 512:
             # self.afa_cam = AFA_layer_cam()
             # self.afa_sam = AFA_layer_sam()
-            self.afa_cam = AFA_layer_cam_data(512)
-            self.afa_sam = AFA_layer_sam_data(49)
+            self.afa_cam = AFA_layer_cam_data(channels=512)
+            self.afa_sam = AFA_layer_sam_data(h=7, w=7)
 
         self.A_downsample = A_downsample
         self.B_downsample = B_downsample
