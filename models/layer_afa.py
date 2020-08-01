@@ -5,14 +5,19 @@ import torch.nn.functional as F
 
 class CAM(nn.Module):
     def __init__(self, channels, r=16, L=32):
+        '''
+        channels: Bottleneck's planes
+        r: reduction ration
+        L: Minimum dimension threshold
+        '''
         super(CAM, self).__init__()
         self.gap = nn.AdaptiveAvgPool2d(1)
         self.cat_channels = channels * 8
         d = max(int(self.cat_channels/r), L)
         self.fc = nn.Linear(in_features=self.cat_channels, out_features=d, bias=False)
         # fc layer is designed as a dimensionality reduction layer
-        self.fc1 = nn.Linear(in_features=d, out_features=round(self.cat_channels/2), bias=False)
-        self.fc2 = nn.Linear(in_features=d, out_features=round(self.cat_channels/2), bias=False)
+        self.trans1 = nn.Linear(in_features=d, out_features=round(self.cat_channels/2), bias=False)
+        self.trans2 = nn.Linear(in_features=d, out_features=round(self.cat_channels/2), bias=False)
         # the layer's weights are c*(2c/r).
         # parameter matrices
         self.relu = nn.ReLU(inplace=True)
@@ -24,8 +29,8 @@ class CAM(nn.Module):
         d_concate = d_concate.view(d_concate.size(0), -1)
 
         g = self.relu(self.fc(d_concate))
-        g1 = torch.unsqueeze(self.fc1(g), dim=1)
-        g2 = torch.unsqueeze(self.fc2(g), dim=1)
+        g1 = torch.unsqueeze(self.trans1(g), dim=1)
+        g2 = torch.unsqueeze(self.trans2(g), dim=1)
         w = torch.cat((g1, g2), dim=1)
         w = F.softmax(w, dim=1).permute(1, 0, 2)
         w_self = w[0].view(w[0].size(0), w[0].size(1), 1, 1)
@@ -38,12 +43,16 @@ class CAM(nn.Module):
 
 class SAM(nn.Module):
     def __init__(self, h=19, w=19, kernel_size=7, padding=3):
+        '''
+        h: height
+        w: width
+        kernel_size, padding: conv layer's params
+        '''
         super(SAM, self).__init__()
-
         self.conv = nn.Conv2d(in_channels=2, out_channels=1, kernel_size=kernel_size, stride=1, padding=padding, bias=False)
         self.channels = h * w
-        self.fc1 = nn.Linear(in_features=self.channels, out_features=self.channels, bias=False)
-        self.fc2 = nn.Linear(in_features=self.channels, out_features=self.channels, bias=False)
+        self.trans1 = nn.Linear(in_features=self.channels, out_features=self.channels, bias=False)
+        self.trans2 = nn.Linear(in_features=self.channels, out_features=self.channels, bias=False)
         # the layer's weights are hw*hw.
         # parameter matrices
         self.relu = nn.ReLU(inplace=True)
@@ -56,8 +65,8 @@ class SAM(nn.Module):
 
         g = self.relu(self.conv(d_concat))
         g_vector = g.view(b, -1)
-        g1 = torch.unsqueeze(self.fc1(g_vector), dim=1)
-        g2 = torch.unsqueeze(self.fc2(g_vector), dim=1)
+        g1 = torch.unsqueeze(self.trans1(g_vector), dim=1)
+        g2 = torch.unsqueeze(self.trans2(g_vector), dim=1)
         w = torch.cat((g1, g2), dim=1)
         w = F.softmax(w, dim=1).permute(1, 0, 2)
         w_self = w[0].view(w[0].size(0), -1, height, width)
