@@ -5,7 +5,7 @@
 ## Introduction
   The Adaptive Feature Aggregation (AFA) layer for multi-task CNNs, in which a dynamic aggregation mechanism is designed to allow each task adaptively determines the degree to which the feature aggregation of different tasks is needed. We introduce two types of aggregation modules to the AFA layer, which realize the adaptive feature aggregation by capturing the feature dependencies along the channel and spatial axes, respectively.   
 
-![image](https://github.com/zhenshen-mla/AFANet/blob/master/examples/architecture.png)
+![image](https://github.com/zhenshen-mla/AFANet/tree/master/examples/architecture.png)
   
 ## Models
   * `/models/layer_afa.py`: implementation of afa layer;
