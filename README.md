@@ -5,6 +5,10 @@
 ## Introduction
   The Adaptive Feature Aggregation (AFA) layer for multi-task CNNs, in which a dynamic aggregation mechanism is designed to allow each task adaptively determines the degree to which the feature aggregation of different tasks is needed. We introduce two types of aggregation modules to the AFA layer, which realize the adaptive feature aggregation by capturing the feature dependencies along the channel and spatial axes, respectively.   
   
+## Structure
+![image](https://github.com/zhenshen-mla/AFANet/blob/master/examples/structure.png)
+  Structure of the AFA layer for multi-task CNNs. It is a plug-and-play component to connect any intermediate convolutional layers of single-task CNNs. Inside the AFA layer, there are sequentially two modules, i.e., CAM and SAM, to support the adaptive feature aggregation between tasks. The output feature maps remain the same size as the inputs, and can be directly fed to the next layers of single-task CNNs.   
+  
 ## Models
   * `/models/layer_afa.py`: implementation of afa layer;
   * `/models/net_image_resnet.py`: single task network based resnet50;   
