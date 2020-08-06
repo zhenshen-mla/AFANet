@@ -54,4 +54,7 @@
   1. Download the dataset([NYUv2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html), [Adience benckmark](https://talhassner.github.io/home/projects/Adience/Adience-data.html#frontalized)) and configure the data path.   
   2. Train the single-task and save the pretrained single-task model in `/weight`:   
   3. For pixel tasks, using Deeplabv3+ network with ResNet backbone to conduct semantic segmentation and depth prediction. For image tasks, using ResNet network to conduct age prediction and gender classification (load pretrained model in `/weight`):   
-  
+
+## Reference  
+  [1] A. Kendall, Y. Gal, and R. Cipolla, “Multi-task learning using uncertainty to weigh lossesfor scene geometry and semantics,” in Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2018, pp. 7482–7491.   
+  [2] Z. Chen, V. Badrinarayanan, C.-Y. Lee, and A. Rabinovich, “GradNorm: Gradient normalization for adaptive loss balancing in deep multitask networks,” in Proceedings of the 35th International Conference on Machine Learning, 2018, pp. 794–803. 
