@@ -17,7 +17,9 @@
   * `/models/net_pixel_afalayer.py`: pixel tasks aggregation with afa layer;   
   
 ## Discussion
-  In multi-task structure, due to the fact that each task has different parameter complexity and convergence speed, some tasks may be dominated by one task in the process of model training, especially in the parameter updating process of back propagation, which may lead to some tasks deviate from their training objectives.
+  In multi-task structure, due to the fact that each task has different parameter complexity and convergence speed, some tasks may be dominated by one task in the process of model training, especially in the parameter updating process of back propagation, which may lead to some tasks deviate from their training objectives.  
+  Our current study mainly concentrates on designing ﬂexible multi-task CNN architectures. And in the experiments, we have noticed that there is a great difference in gradient magnitude and convergence speed between tasks. If we jointly train two tasks without any balancing control, the multi-task gradient could be easily dominated by one task gradient, which comes at the cost of degrading the performance of the other task.  
+  Besides, we shall develop gradient normalization techniques by dynamically tuning gradient magnitudes [16], so that the interference between task gradients could be largely avoided
   
 ## Requirements  
 
