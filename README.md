@@ -21,7 +21,7 @@
   
   Our current study mainly concentrates on designing ﬂexible multi-task CNN architectures. And in the experiments, we have noticed that there is a great difference in gradient magnitude and convergence speed between tasks (especially in semantic segmentation and depth prediction). If we jointly train two tasks without any balancing control, the multi-task gradient could be easily dominated by one task gradient, which comes at the cost of degrading the performance of the other task.  
   
-  In this work[1], they used a joint likelihood formulation to learn task weights based on the homoscedastic uncertainty in each task. And in GradNorm[2], author proposed a gradient normalization algorithm that automatically balances training in multi-task models by dynamically tuning gradient magnitudes. 
+   Several recent studies engaged in weighting the relative contributions of each task in the loss function of multi-task CNNs. In this work[1], they used a joint likelihood formulation to learn task weights based on the homoscedastic uncertainty in each task. And in GradNorm[2], author proposed a gradient normalization algorithm that automatically balances training in multi-task models by dynamically tuning gradient magnitudes. 
   
 ## Requirements  
 
