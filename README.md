@@ -16,6 +16,9 @@
   * `/models/net_pixel_deeplab.py`: single task network based deeplab;   
   * `/models/net_pixel_afalayer.py`: pixel tasks aggregation with afa layer;   
   
+## Discussion
+  In multi-task structure, due to the fact that each task has different parameter complexity and convergence speed, some tasks may be dominated by one task in the process of model training, especially in the parameter updating process of back propagation, which may lead to some tasks deviate from their training objectives.
+  
 ## Requirements  
 
   Python >= 3.6  
