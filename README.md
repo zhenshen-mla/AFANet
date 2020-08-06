@@ -22,7 +22,7 @@
   numpy  
   torch  
   torchvision  
-  tensorboardX
+  tensorboardX  
   sklearn  
   
 
