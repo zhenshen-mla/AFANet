@@ -106,6 +106,7 @@ class AFA_layer_sam(nn.Module):
 '''
 Sometimes the difference between the two tasks is so great that it is easy to be dominated by one task when updating parameters. 
 When dealing with these tasks, we can return the calibrated gradient.
+We use the x.data (or x.detach) to set the gradient. Specifically, in back propagation, we save the gradient value before the gradient interaction of the shared module and return it to each branch.
 '''
 class AFA_layer_cam_data(nn.Module):
     def __init__(self, channels=512):
