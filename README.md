@@ -20,9 +20,10 @@
 
   Python >= 3.6  
   numpy  
-  PyTorch >= 1.0  
+  torch  
   torchvision  
   tensorboardX
+  sklearn  
   
 
 ## Installation
@@ -35,7 +36,7 @@
     ```
   2. For custom dependencies:   
     ```
-    pip install matplotlib tensorboardX   
+    pip install matplotlib tensorboardX sklearn  
     ```
 ## For Training   
   1. Download the dataset([NYUv2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html), [Adience benckmark](https://talhassner.github.io/home/projects/Adience/Adience-data.html#frontalized)) and configure the data path.   
