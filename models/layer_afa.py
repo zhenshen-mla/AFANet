@@ -106,7 +106,9 @@ class AFA_layer_sam(nn.Module):
 '''
 Sometimes the difference between the two tasks is so great that it is easy to be dominated by one task when updating parameters. 
 When dealing with these tasks, we can return the calibrated gradient.
-We use the x.data (or x.detach) to set the gradient. Specifically, in back propagation, we save the gradient value before the gradient interaction of the shared module and return it to each branch.
+Specifically, in the back propagation, before the gradient fusion of the interaction module, 
+the gradient value of the branch with relatively small gradient is saved and returned to the corresponding branch, 
+instead of returning the fused gradient, so as to avoid being dominated by a certain task.
 '''
 class AFA_layer_cam_data(nn.Module):
     def __init__(self, channels=512):
@@ -115,13 +117,11 @@ class AFA_layer_cam_data(nn.Module):
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x1, x2):
-        data1 = x1.data
-        data2 = x2.data
-        o1, o2 = self.cam(data1, data2)
+        data1 = x1.data  # We assume that the second task is a high complexity task with a large gradient magnitude
+        o1, o2 = self.cam(data1, x2)
         out1 = o1 + x1 - data1
-        out2 = o2 + x2 - data2
         out1 = self.relu(out1)
-        out2 = self.relu(out2)
+        out2 = self.relu(o2)
         return out1, out2
 
 
@@ -133,12 +133,10 @@ class AFA_layer_sam_data(nn.Module):
 
     def forward(self, x1, x2):
         data1 = x1.data
-        data2 = x2.data
-        o1, o2 = self.sam(data1, data2)
+        o1, o2 = self.sam(data1, x2)
         out1 = o1 + x1 - data1
-        out2 = o2 + x2 - data2
         out1 = self.relu(out1)
-        out2 = self.relu(out2)
+        out2 = self.relu(o2)
         return out1, out2
 
 
