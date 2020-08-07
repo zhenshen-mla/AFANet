@@ -104,11 +104,10 @@ class AFA_layer_sam(nn.Module):
 
 
 '''
-Sometimes the difference between the two tasks is so great that it is easy to be dominated by one task when updating parameters. 
-When dealing with these tasks, we can return the calibrated gradient.
-Specifically, in the back propagation, before the gradient fusion of the interaction module, 
-the gradient value of the branch with relatively small gradient is saved and returned to the corresponding branch, 
-instead of returning the fused gradient, so as to avoid being dominated by a certain task.
+In practice, we find that if the complexity of tasks varies greatly, 
+the multi task structure will be dominated by a high complexity task. 
+For the neglected branch, the gradient value after fusion is always greater than the set threshold. 
+Therefore, for the sake of simplicity, we directly return the gradient value of the branch before fusion.
 '''
 class AFA_layer_cam_data(nn.Module):
     def __init__(self, channels=512):
